@@ -1,0 +1,19 @@
+FC= ifort # or gfortran
+
+FFLAGS=
+
+.SUFFIXES : .f90 .o
+
+.f90.o:
+	$(FC) -c $<
+.mod.o:
+	ls *.mod
+
+# object
+
+
+poisson_serial : poisson_serial.o
+	$(FC) poisson_serial.o -o possion_serial
+
+clean :
+	rm  *.o *.mod
