@@ -1,0 +1,38 @@
+FC= mpif90
+
+FFLAGS=
+
+.SUFFIXES : .f90 .o
+
+.f90.o:
+	$(FC) -c $<
+.mod.o:
+	ls *.mod
+
+# object
+
+
+hello1: hello1.o
+	$(FC) hello1.o -o hello1
+
+hello2: hello2.o
+	$(FC) hello2.o -o hello2
+
+hello3: hello3.o
+	$(FC) hello3.o -o hello3
+
+pi: pi.o
+	$(FC) pi.o -o pi
+
+mat_vec: mat_vec.o
+	$(FC) mat_vec.o -o mat_vec
+
+
+poisson_mpi : poisson_mpi.o
+	$(FC) poisson_mpi.o -o poisson_mpi
+	
+poisson_mpi_map : poisson_mpi_map.o
+	$(FC) poisson_mpi_map.o -o poisson_mpi_map
+
+clean :
+	rm  *.o *.mod
