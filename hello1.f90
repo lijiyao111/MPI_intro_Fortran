@@ -7,9 +7,9 @@ integer npe_wrld, &! number of processes within the world communicator
 real(kind=8) :: timstart,timend
 
 call MPI_INIT(ierr)  ! initialize MPI environment
-call MPI_COMM_RANK(MPI_COMM_WORLD,rnk_wrld,ierr)  ! determine world size
-call MPI_COMM_SIZE(MPI_COMM_WORLD,npe_wrld,ierr)   ! determine rank within world
-
+call MPI_COMM_SIZE(MPI_COMM_WORLD,npe_wrld,ierr) ! determine total number of processes within world
+call MPI_COMM_RANK(MPI_COMM_WORLD,rnk_wrld,ierr)  ! determine rank within world
+  
 timstart=MPI_WTIME()
 print *, "Hello world! I'm process ", rnk_wrld," out of ",&
 npe_wrld, " processes."
